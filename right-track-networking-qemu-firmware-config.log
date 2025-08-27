@@ -1,0 +1,59 @@
+DTB_PATH="/home/arash/Downloads/linux-5.10.218/arch/arm/boot/dts/vexpress-v2p-ca9.dtb"
+
+QEMU_AUDIO_DRV=none qemu-system-arm \
+    -M vexpress-a9 \
+    -m 512M \
+    -kernel /home/arash/Downloads/linux-5.10.218/arch/arm/boot/zImage \
+    -dtb "$DTB_PATH" \
+    -sd asus_rootfs.img \
+    -append "root=/dev/mmcblk0 rw console=ttyAMA0 init=/bin/sh" \
+    -nographic \
+    -net nic \
+    -netdev user,id=net0,hostfwd=tcp::8080-:80
+
+
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/bus@40000000/bus@40000000:motherboard/bus@40000000:motherboard:iofpga@7,00000000/10007000.kmi/serio1/input/input2
+EXT4-fs (mmcblk0): recovery complete
+EXT4-fs (mmcblk0): mounted filesystem with ordered data mode. Opts: (null)
+VFS: Mounted root (ext4 filesystem) on device 179:0.
+Freeing unused kernel memory: 1024K
+Run /bin/sh as init process
+random: crng init done
+/ # ifconfig
+ifconfig: /proc/net/dev: No such file or directory
+/ # mount -t proc none /proc
+/ # mount -t sysfs none /sys
+/ # 
+/ # ifconfig eth0 up
+Generic PHY 4e000000.ethernet-ffffffff:01: attached PHY driver [Generic PHY] (mii_bus:phy_addr=4e000000.ethernet-ffffffff:01, irq=POLL)
+smsc911x 4e000000.ethernet eth0: SMSC911x/921x identified at 0xa08b0000, IRQ: 30
+/ # udhcpc -i eth0
+udhcpc: started, v1.25.1
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+^C
+
+
+
