@@ -1,0 +1,57 @@
+ALSA device list:
+  #0: ARM AC'97 Interface PL041 rev0 at 0x10004000, irq 32
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/bus@40000000/bus@40000000:motherboard/bus@40000000:motherboard:iofpga@7,00000000/10007000.kmi/serio1/input/input2
+EXT4-fs (mmcblk0): recovery complete
+EXT4-fs (mmcblk0): mounted filesystem with ordered data mode. Opts: (null)
+VFS: Mounted root (ext4 filesystem) on device 179:0.
+Freeing unused kernel memory: 1024K
+Run /bin/sh as init process
+random: crng init done
+/ # ifconfig eth0
+ifconfig: /proc/net/dev: No such file or directory
+eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          Interrupt:30 
+
+/ # mount -t proc none /proc
+/ # mount -t sysfs none /sys
+/ # 
+/ # ifconfig eth0 up
+Generic PHY 4e000000.ethernet-ffffffff:01: attached PHY driver [Generic PHY] (mii_bus:phy_addr=4e000000.ethernet-ffffffff:01, irq=POLL)
+smsc911x 4e000000.ethernet eth0: SMSC911x/921x identified at 0xa08b0000, IRQ: 30
+/ # ifconfig
+eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:30 
+
+/ # udhcpc -i eth0
+udhcpc: started, v1.25.1
+udhcpc: sending discover
+udhcpc: sending select for 10.0.2.15
+udhcpc: lease of 10.0.2.15 obtained, lease time 86400
+/ # ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:632 (632.0 B)  TX bytes:684 (684.0 B)
+          Interrupt:30 
+
+/ # mkdir -p /tmp/lighttpd/www
+/ # cat > /lighttpd.conf << EOF
+> server.module-dir = "/usr/lib"
+> server.modules = ( "mod_access", "mod_indexfile", "mod_staticfile" )
+> index-file.names = ( "index.html" )
+> server.document-root = "/tmp/lighttpd/www"
+> server.port = 80
+> server.errorlog = "/tmp/lighttpd/err.log"
+> url.access-deny = ( "~" )
+> EOF
+/ # /usr/sbin/lighttpd -D -f /lighttpd.conf
+/ # 
+
