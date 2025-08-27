@@ -1,0 +1,128 @@
+cd _RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ ls
+19C63C.squashfs  1C  1C.7z  _1C.extracted  2AA0000.ubi  asus_rootfs.img  squashfs-root  ubifs-root
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ mv asus_rootfs.img asus_rootfs_corrupted.img
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ cd squashfs-root
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ rm etc var home mnt opt root
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ ls
+bin    cifs2  fake_nvram.c        fake_nvram_nolib.o  jffs  libbcm.so      libbcm_stub.o  libblank.o   libnvram_fake.c  libnvram.so    media  proc  sbin         shim_syms.o   sys      tmp  www
+cifs1  dev    fake_nvram_nolib.c  fake_nvram.so       lib   libbcm_stub.c  libblank.c     libblank.so  libnvram_fake.o  lighttpd.conf  mmc    rom   shim_syms.c  shim_syms.so  sysroot  usr
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ ls -la
+total 168
+drwxr-xr-x 17 arash arash  4096 Aug 27 08:17 .
+drwxrwxr-x  5 arash arash  4096 Aug 27 08:17 ..
+drwxr-xr-x  2 arash arash  4096 Aug 27 02:19 bin
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 cifs1
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 cifs2
+drwxr-xr-x  3 arash arash  4096 Aug 27 02:09 dev
+-rw-rw-r--  1 arash arash  1677 Aug 27 01:50 fake_nvram.c
+-rw-rw-r--  1 arash arash  1570 Aug 27 01:40 fake_nvram_nolib.c
+-rw-rw-r--  1 arash arash  2076 Aug 27 01:40 fake_nvram_nolib.o
+-rwxrwxr-x  1 arash arash  7684 Aug 27 01:50 fake_nvram.so
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 jffs
+drwxr-xr-x  3 arash arash  4096 Aug  5 13:31 lib
+-rwxrwxr-x  1 arash arash  5400 Aug 27 02:25 libbcm.so
+-rw-rw-r--  1 arash arash   332 Aug 27 02:25 libbcm_stub.c
+-rw-rw-r--  1 arash arash  1032 Aug 27 02:25 libbcm_stub.o
+-rw-rw-r--  1 arash arash   153 Aug 27 02:20 libblank.c
+-rw-rw-r--  1 arash arash   988 Aug 27 02:20 libblank.o
+-rwxrwxr-x  1 arash arash  5356 Aug 27 02:20 libblank.so
+-rw-rw-r--  1 arash arash  1394 Aug 27 02:20 libnvram_fake.c
+-rw-rw-r--  1 arash arash  1984 Aug 27 02:20 libnvram_fake.o
+-rwxrwxr-x  1 arash arash  5700 Aug 27 02:20 libnvram.so
+-rw-r--r--  1 root  root    227 Aug 27 06:42 lighttpd.conf
+lrwxrwxrwx  1 arash arash     9 Aug  5 13:31 media -> tmp/media
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 mmc
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 proc
+drwxr-xr-x  6 arash arash  4096 Aug  5 13:31 rom
+drwxr-xr-x  2 arash arash  4096 Aug 27 01:24 sbin
+-rw-rw-r--  1 arash arash   509 Aug 27 02:25 shim_syms.c
+-rw-rw-r--  1 arash arash  1052 Aug 27 02:25 shim_syms.o
+-rwxrwxr-x  1 arash arash  5420 Aug 27 02:26 shim_syms.so
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 sys
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 sysroot
+drwxr-xr-x  3 arash arash  4096 Aug 27 07:59 tmp
+drwxr-xr-x 10 arash arash  4096 Aug  5 13:31 usr
+drwxrwxr-x 17 arash arash 16384 Aug 27 00:30 www
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ mkdir etc var home mnt opt root
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ ls -la
+total 192
+drwxr-xr-x 23 arash arash  4096 Aug 27 08:17 .
+drwxrwxr-x  5 arash arash  4096 Aug 27 08:17 ..
+drwxr-xr-x  2 arash arash  4096 Aug 27 02:19 bin
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 cifs1
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 cifs2
+drwxr-xr-x  3 arash arash  4096 Aug 27 02:09 dev
+drwxrwxr-x  2 arash arash  4096 Aug 27 08:17 etc
+-rw-rw-r--  1 arash arash  1677 Aug 27 01:50 fake_nvram.c
+-rw-rw-r--  1 arash arash  1570 Aug 27 01:40 fake_nvram_nolib.c
+-rw-rw-r--  1 arash arash  2076 Aug 27 01:40 fake_nvram_nolib.o
+-rwxrwxr-x  1 arash arash  7684 Aug 27 01:50 fake_nvram.so
+drwxrwxr-x  2 arash arash  4096 Aug 27 08:17 home
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 jffs
+drwxr-xr-x  3 arash arash  4096 Aug  5 13:31 lib
+-rwxrwxr-x  1 arash arash  5400 Aug 27 02:25 libbcm.so
+-rw-rw-r--  1 arash arash   332 Aug 27 02:25 libbcm_stub.c
+-rw-rw-r--  1 arash arash  1032 Aug 27 02:25 libbcm_stub.o
+-rw-rw-r--  1 arash arash   153 Aug 27 02:20 libblank.c
+-rw-rw-r--  1 arash arash   988 Aug 27 02:20 libblank.o
+-rwxrwxr-x  1 arash arash  5356 Aug 27 02:20 libblank.so
+-rw-rw-r--  1 arash arash  1394 Aug 27 02:20 libnvram_fake.c
+-rw-rw-r--  1 arash arash  1984 Aug 27 02:20 libnvram_fake.o
+-rwxrwxr-x  1 arash arash  5700 Aug 27 02:20 libnvram.so
+-rw-r--r--  1 root  root    227 Aug 27 06:42 lighttpd.conf
+lrwxrwxrwx  1 arash arash     9 Aug  5 13:31 media -> tmp/media
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 mmc
+drwxrwxr-x  2 arash arash  4096 Aug 27 08:17 mnt
+drwxrwxr-x  2 arash arash  4096 Aug 27 08:17 opt
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 proc
+drwxr-xr-x  6 arash arash  4096 Aug  5 13:31 rom
+drwxrwxr-x  2 arash arash  4096 Aug 27 08:17 root
+drwxr-xr-x  2 arash arash  4096 Aug 27 01:24 sbin
+-rw-rw-r--  1 arash arash   509 Aug 27 02:25 shim_syms.c
+-rw-rw-r--  1 arash arash  1052 Aug 27 02:25 shim_syms.o
+-rwxrwxr-x  1 arash arash  5420 Aug 27 02:26 shim_syms.so
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 sys
+drwxr-xr-x  2 arash arash  4096 Aug  5 13:31 sysroot
+drwxr-xr-x  3 arash arash  4096 Aug 27 07:59 tmp
+drwxr-xr-x 10 arash arash  4096 Aug  5 13:31 usr
+drwxrwxr-x  2 arash arash  4096 Aug 27 08:17 var
+drwxrwxr-x 17 arash arash 16384 Aug 27 00:30 www
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ echo "root:x:0:0:root:/root:/bin/sh" | sudo tee squashfs-root/etc/passwd
+[sudo] password for arash: 
+Sorry, try again.
+[sudo] password for arash: 
+tee: squashfs-root/etc/passwd: No such file or directory
+root:x:0:0:root:/root:/bin/sh
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ ls
+bin    dev           fake_nvram_nolib.c  home  libbcm.so      libblank.c   libnvram_fake.c  lighttpd.conf  mnt   rom   shim_syms.c   sys      usr
+cifs1  etc           fake_nvram_nolib.o  jffs  libbcm_stub.c  libblank.o   libnvram_fake.o  media          opt   root  shim_syms.o   sysroot  var
+cifs2  fake_nvram.c  fake_nvram.so       lib   libbcm_stub.o  libblank.so  libnvram.so      mmc            proc  sbin  shim_syms.so  tmp      www
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ ls etc
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted/squashfs-root$ cd ..
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ echo "root:x:0:0:root:/root:/bin/sh" | sudo tee squashfs-root/etc/passwd
+root:x:0:0:root:/root:/bin/sh
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ echo "root:x:0:" | sudo tee squashfs-root/etc/group
+root:x:0:
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ dd if=/dev/zero of=asus_rootfs.img bs=1M count=512
+512+0 records in
+512+0 records out
+536870912 bytes (537 MB, 512 MiB) copied, 0,154948 s, 3,5 GB/s
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ mkfs.ext4 asus_rootfs.img
+mke2fs 1.46.5 (30-Dec-2021)
+Discarding device blocks: done                            
+Creating filesystem with 131072 4k blocks and 32768 inodes
+Filesystem UUID: b026fed7-3809-4bc7-b825-100ecabf2964
+Superblock backups stored on blocks: 
+	32768, 98304
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ sudo mount -o loop asus_rootfs.img /mnt
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ sudo cp -a squashfs-root/* /mnt/
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ sudo umount /mnt
+arash@arash-System-Product-Name:~/Documents/firmware-sec/writeups/FW_RT_AC68U_300438652048/_RT-AC68U_3.0.0.4_386_52048-g2d011f4.trx.extracted$ 
+
