@@ -32,3 +32,14 @@ QEMU_AUDIO_DRV=none qemu-system-arm \
     -append "root=/dev/mmcblk0 rw console=ttyAMA0 init=/bin/sh" \
     -nographic
 ```
+
+
+
+networking inside :
+
+```
+mount -t proc none /proc
+mount -t sysfs none /sys
+ifconfig eth0 up
+udhcpc -i eth0
+```
